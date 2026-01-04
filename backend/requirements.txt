@@ -1,0 +1,75 @@
+# =============================================================================
+# AI Form Filling Assistant - Backend Dependencies
+# Optimized for CPU-based processing (Intel hardware)
+# Compatible with Python 3.11+ including 3.13
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Core Framework
+# -----------------------------------------------------------------------------
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6  # Required for file uploads
+
+# -----------------------------------------------------------------------------
+# Data Validation
+# -----------------------------------------------------------------------------
+pydantic>=2.5.0
+
+# -----------------------------------------------------------------------------
+# OCR Libraries
+# -----------------------------------------------------------------------------
+pytesseract>=0.3.10      # Python wrapper for Tesseract OCR
+easyocr>=1.7.0           # Deep learning based OCR (CPU mode)
+pdf2image>=1.16.0        # Convert PDF pages to images
+Pillow>=10.0.0           # Image processing
+
+# Cloud OCR APIs (optional - install only if using cloud OCR)
+requests>=2.31.0            # Required for OCR.space and Google Vision REST API
+# google-cloud-vision>=3.4.0  # Google Cloud Vision API (if using service account)
+# boto3>=1.34.0              # AWS Textract
+# azure-cognitiveservices-vision-computervision>=0.9.0  # Azure Computer Vision
+
+# -----------------------------------------------------------------------------
+# NLP (for entity extraction)
+# -----------------------------------------------------------------------------
+# spacy>=3.7.0           # TODO: Uncomment when adding NER models
+# en_core_web_sm         # TODO: Install via: python -m spacy download en_core_web_sm
+
+# -----------------------------------------------------------------------------
+# PDF Processing
+# -----------------------------------------------------------------------------
+PyPDF2>=3.0.0            # PDF reading
+reportlab>=4.0.0         # PDF generation (for filled forms)
+
+# -----------------------------------------------------------------------------
+# Security
+# -----------------------------------------------------------------------------
+cryptography>=42.0.0     # AES-256 encryption for profile data
+
+# -----------------------------------------------------------------------------
+# Utilities
+# -----------------------------------------------------------------------------
+python-dotenv>=1.0.0     # Environment variable management
+
+# -----------------------------------------------------------------------------
+# Development
+# -----------------------------------------------------------------------------
+# pytest>=7.4.0          # Testing
+# httpx>=0.26.0          # Async HTTP client for testing
+
+# =============================================================================
+# SYSTEM DEPENDENCIES (install separately)
+# =============================================================================
+# 
+# Tesseract OCR:
+#   - Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki
+#   - Linux: sudo apt-get install tesseract-ocr tesseract-ocr-hin
+#   - macOS: brew install tesseract tesseract-lang
+#
+# Poppler (for pdf2image):
+#   - Windows: Download from https://github.com/osborn/poppler-windows/releases
+#   - Linux: sudo apt-get install poppler-utils
+#   - macOS: brew install poppler
+#
+# =============================================================================

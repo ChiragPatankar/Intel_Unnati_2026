@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Filling Assistant</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-row">
+        <h1>🇮🇳 Form Filler</h1>
+        <button id="theme-toggle" class="icon-btn" title="Toggle dark mode">🌙</button>
+      </div>
+      <p class="subtitle">Auto-fill forms with your ID data</p>
+    </header>
+
+    <!-- Connection Status -->
+    <div id="connection-status" class="status">
+      <span class="status-dot"></span>
+      <span class="status-text">Checking connection...</span>
+    </div>
+
+    <!-- Security Lock (if password set) -->
+    <div id="security-section" class="section hidden">
+      <div class="lock-icon">🔒</div>
+      <p>Enter master password to unlock</p>
+      <div class="password-input">
+        <input type="password" id="password-input" placeholder="Master password">
+        <button id="unlock-btn">Unlock</button>
+      </div>
+      <p id="unlock-error" class="error hidden"></p>
+    </div>
+
+    <!-- Main Content (when unlocked) -->
+    <div id="main-content">
+      <!-- Profile Selection -->
+      <div id="profile-section" class="section">
+        <label for="profile-select">Select Profile:</label>
+        <div class="select-row">
+          <select id="profile-select">
+            <option value="">-- Select a profile --</option>
+          </select>
+          <button id="refresh-btn" class="icon-btn" title="Refresh profiles">🔄</button>
+        </div>
+      </div>
+
+      <!-- Profile Card -->
+      <div id="profile-card" class="profile-card hidden">
+        <div class="profile-card-header">
+          <h3 id="profile-name">Profile Name</h3>
+          <span id="profile-docs" class="badge">0 docs</span>
+        </div>
+        <div id="fields-preview" class="fields-preview">
+          <!-- Fields will be populated here -->
+        </div>
+        <div class="profile-card-footer">
+          <span id="last-updated">Updated: --</span>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div id="page-stats" class="stats-row hidden">
+        <div class="stat">
+          <span class="stat-number" id="detected-fields">0</span>
+          <span class="stat-label">Fields Found</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="fillable-fields">0</span>
+          <span class="stat-label">Fillable</span>
+        </div>
+      </div>
+
+      <!-- Fill Options -->
+      <div id="fill-options" class="section hidden">
+        <label class="checkbox-row">
+          <input type="checkbox" id="partial-fill">
+          <span>Only fill high-confidence matches</span>
+        </label>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="actions">
+        <button id="autofill-btn" class="primary-btn" disabled>
+          ✨ Auto-Fill This Page
+        </button>
+        <div class="secondary-actions">
+          <button id="detect-btn" class="secondary-btn" title="Detect form fields">
+            🔍 Detect
+          </button>
+          <button id="open-webapp-btn" class="secondary-btn" title="Open web app">
+            📂 Web App
+          </button>
+        </div>
+      </div>
+
+      <!-- Fill Results -->
+      <div id="fill-results" class="results hidden">
+        <div class="results-header">
+          <span class="results-icon">✅</span>
+          <span id="fill-count">0</span> fields filled
+        </div>
+        <div id="results-details" class="results-details"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-row">
+        <span>v1.1.0</span>
+        <a href="http://localhost:5173" target="_blank">Manage Docs →</a>
+      </div>
+      <div class="shortcut-hint">
+        <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> to auto-fill
+      </div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
